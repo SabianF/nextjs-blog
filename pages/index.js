@@ -5,18 +5,24 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import { getCatFactsData } from '../lib/cat-facts';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  const catFactsData = await getCatFactsData();
 
   return {
     props: {
       allPostsData,
+      catFactsData,
     },
   };
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({
+  allPostsData,
+  catFactsData,
+}) {
   return (
     <Layout home>
       <Head>
@@ -42,6 +48,10 @@ export default function Home({ allPostsData }) {
             </li>
           ))}
         </ul>
+      </section>
+      <section className={utilStyles.headingMd}>
+        <h2 className={utilStyles.headingLg}>Cat fact</h2>
+        <p>{catFactsData.fact}</p>
       </section>
     </Layout>
   );
