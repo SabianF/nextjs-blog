@@ -5,7 +5,7 @@ import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
 
   const staticProps = {
     props: {
@@ -37,6 +37,7 @@ export default function Post({ postData }) {
         <p>{postData.title}</p>
         <p>{postData.id}</p>
         <p>{postData.date}</p>
+        <div dangerouslySetInnerHTML={{ __html: postData.htmlContent }} />
       </main>
     </Layout>
   );
