@@ -32,14 +32,26 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
   return (
     <Layout>
+      {postHead()}
+      {postBody()}
+    </Layout>
+  );
+
+  function postHead() {
+    return (
       <Head>
         <title>{postData.title}</title>
       </Head>
+    );
+  }
+
+  function postBody() {
+    return (
       <main>
         <h1 className={utilStyles.Head}>{postData.title}</h1>
         <p className={utilStyles.lightText}><Date dateString={postData.date} /></p>
         <div dangerouslySetInnerHTML={{ __html: postData.htmlContent }} />
       </main>
-    </Layout>
-  );
+    );
+  }
 }

@@ -25,16 +25,33 @@ export default function Home({
 }) {
   return (
     <Layout home>
+      {homeHead()}
+      {homeIntroBlock()}
+      {homeMainBlock()}
+      {homeFooter()}
+    </Layout>
+  );
+
+  function homeHead() {
+    return (
       <Head>
         <title>{siteTitle}</title>
       </Head>
+    );
+  }
+
+  function homeIntroBlock() {
+    return (
       <section className={utilStyles.headingMd}>
         <p>Hi! I'm Sabian.</p>
-        <p>
-          This is my sample website.
-        </p>
+        <p>This is my sample website.</p>
         <Link href="/posts/first-post">First post</Link>
       </section>
+    );
+  }
+
+  function homeMainBlock() {
+    return (
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
@@ -46,10 +63,15 @@ export default function Home({
           ))}
         </ul>
       </section>
+    );
+  }
+
+  function homeFooter() {
+    return (
       <section className={utilStyles.headingMd}>
         <h2 className={utilStyles.headingLg}>Cat fact</h2>
         <p>{catFactsData.fact}</p>
       </section>
-    </Layout>
-  );
+    );
+  }
 }
