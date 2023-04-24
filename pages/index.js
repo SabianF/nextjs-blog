@@ -45,7 +45,6 @@ export default function Home({
       <section className={utilStyles.headingMd}>
         <p>Hi! I'm Sabian.</p>
         <p>This is my sample website.</p>
-        <Link href="/posts/first-post">First post</Link>
       </section>
     );
   }
