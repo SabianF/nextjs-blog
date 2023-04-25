@@ -22,6 +22,15 @@ export async function getStaticProps() {
 export default function Home({
   allPostsData,
   catFactsData,
+}: {
+  allPostsData: {
+    date: string,
+    title: string,
+    id: string,
+  }[],
+  catFactsData: {
+    fact: string,
+  },
 }) {
   return (
     <Layout home>
